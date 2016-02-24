@@ -65,6 +65,15 @@ router.route('/lions/:lions_id')
 			}
 		})
 	})
+	.delete(function(req, res){
+		Lion.remove({_id: req.params.lions_id}, function(err, lion){
+			if(err){
+				console.log(err)
+			} else {
+				res.json({title: 'lion deleted'})
+			}
+		})
+	})
 
 	
 
