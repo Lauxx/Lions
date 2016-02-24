@@ -1,21 +1,31 @@
 console.log("hello");
 
-var BlogList = React.createClass({
+var TodoList = React.createClass({
 	render: function(){
 		return(
 			<div>
-				<p>Hello there bloglist </p>
+				<p>Hello there TODO list </p>
 			</div>	
 			)
 	}
 });
 
 var App = React.createClass({
+
+	getInitialState: function (){
+		return{
+			todos: []
+		}
+	},
+
+
+
+
 	render: function(){
 		return(
 			<div>
 				<h1> hello universe </h1>
-				<BlogList/>	
+				<TodoList/>	
 			</div>
 			)
 	}
