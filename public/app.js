@@ -2,6 +2,7 @@ console.log("hello");
 
 var TodoList = React.createClass({
 	render: function(){
+		var todosList = this.props.todos.map()
 		return(
 			<div>
 				<p>Hello there TODO list </p>
@@ -18,6 +19,21 @@ var App = React.createClass({
 		}
 	},
 
+	loadTodosFromServer: function(){
+		$.ajax({
+			url: '/api/lions',
+			method: 'GET'
+		}).done(function(data){
+			this.setState({
+				todos: data
+			})
+		}.bind(this));
+	},
+
+	componentDidMount: function(){
+		this.loadTodosFromServer();
+	},
+
 
 
 
@@ -25,7 +41,7 @@ var App = React.createClass({
 		return(
 			<div>
 				<h1> hello universe </h1>
-				<TodoList/>	
+				<TodoList todos={ this.state.todos }/>	
 			</div>
 			)
 	}
